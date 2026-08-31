@@ -7,6 +7,10 @@ class DoctorBase(BaseModel):
     specialty: str
     bio: Optional[str] = None
     image_url: Optional[str] = None
+    experience_years: Optional[int] = 0
+    rating: Optional[float] = 0.0
+    reviews_count: Optional[int] = 0
+    past_treatments: Optional[str] = None
 
 class DoctorCreate(DoctorBase):
     pass
@@ -15,7 +19,7 @@ class Doctor(DoctorBase):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class AppointmentBase(BaseModel):
     patient_name: str

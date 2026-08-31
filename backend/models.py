@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Text, DateTime, ForeignKey, Boolean
+from sqlalchemy import Column, Integer, String, Text, DateTime, ForeignKey, Boolean, Float
 from sqlalchemy.orm import relationship
 import datetime
 from database import Base
@@ -11,6 +11,10 @@ class Doctor(Base):
     specialty = Column(String, index=True)
     bio = Column(Text, nullable=True)
     image_url = Column(String, nullable=True)
+    experience_years = Column(Integer, default=0)
+    rating = Column(Float, default=0.0)
+    reviews_count = Column(Integer, default=0)
+    past_treatments = Column(Text, nullable=True)
 
     appointments = relationship("Appointment", back_populates="doctor")
 
